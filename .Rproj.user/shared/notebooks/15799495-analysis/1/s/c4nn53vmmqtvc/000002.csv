@@ -1,0 +1,32 @@
+"0","```r
+
+  is.factor(heart_disease1$max_hr)
+```"
+"1","[1] FALSE
+"
+"0","```r
+heart_disease1$max_hr <- as.numeric(as.character(heart_disease1$max_hr))
+is.numeric(heart_disease1$max_hr)
+```"
+"1","[1] TRUE
+"
+"0","```r
+mean(heart_disease1$max_hr) #straight average 
+```"
+"1","[1] 149.6778
+"
+"0","```r
+median(heart_disease1$max_hr) #midpoint number in the ascending array of heart rate
+```"
+"1","[1] 153.5
+"
+"0","```r
+max(heart_disease1$max_hr) #max rate
+```"
+"1","[1] 202
+"
+"0","```r
+min(heart_disease1$max_hr) #min rate
+```"
+"1","[1] 71
+"

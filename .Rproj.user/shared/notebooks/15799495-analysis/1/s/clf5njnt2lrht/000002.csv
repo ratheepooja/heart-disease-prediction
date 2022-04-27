@@ -1,0 +1,10 @@
+"0","```r
+summary(heart_disease1$max_hr)
+```"
+"1","   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   71.0   133.0   153.5   149.7   166.0   202.0 
+"
+"0","```r
+# Compare members and casual users
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis, FUN = mean)
+```"

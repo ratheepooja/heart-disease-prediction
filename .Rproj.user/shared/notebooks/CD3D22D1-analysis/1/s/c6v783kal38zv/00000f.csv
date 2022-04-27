@@ -1,0 +1,9 @@
+"0","heart_disease1 %>%"
+"0","  group_by(chl,heart_dis) %>%"
+"0","  summarise(avg_max_hr = mean(max_hr)) %>%"
+"0","  arrange(chl,heart_dis) %>%"
+"0"," ggplot(aes(x = chl, y = avg_max_hr, fill = heart_dis)) +"
+"0","  geom_col(position = ""dodge"") + "
+"0","  labs(title = ""Relationship between Cholestrol and Average Max HR"")"
+"1","[38;5;232m`summarise()` has grouped output by 'chl'. You can override using the `.groups` argument.[39m
+"

@@ -1,0 +1,12 @@
+"0","```r
+heart_disease <- read_csv(\"Heart_Disease_Prediction.csv\")
+```"
+"1","Rows: 270 Columns: 14
+-- Column specification ---------------------------------------------------------------------
+Delimiter: \",\"
+chr  (1): Heart Disease
+dbl (13): Age, Sex, Chest pain type, BP, Cholesterol, FBS over 120, EKG results, Max HR, ...
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"

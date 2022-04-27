@@ -1,0 +1,9 @@
+"0","heart_disease1 %>%"
+"0","  group_by(age,heart_dis) %>%"
+"0","  summarise(avg_max_hr = mean(max_hr)) %>%"
+"0","  arrange(age,heart_dis) %>%"
+"0"," ggplot(aes(x = age, y = avg_max_hr, fill = heart_dis)) +"
+"0","  geom_col(position = ""dodge"") + "
+"0","  labs(title = ""Heart disease present mainly in 38-55 and above 77 years old groups."")"
+"1","[38;5;232m`summarise()` has grouped output by 'age'. You can override using the `.groups` argument.[39m
+"

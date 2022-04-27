@@ -1,0 +1,12 @@
+"0","```r
+colnames(heart_disease)
+```"
+"1"," [1] \"Age\"                     \"Sex\"                     \"Chest pain type\"        
+ [4] \"BP\"                      \"Cholesterol\"             \"FBS over 120\"           
+ [7] \"EKG results\"             \"Max HR\"                  \"Exercise angina\"        
+[10] \"ST depression\"           \"Slope of ST\"             \"Number of vessels fluro\"
+[13] \"Thallium\"                \"Heart Disease\"          
+"
+"0","```r
+View(heart_disease)
+```"

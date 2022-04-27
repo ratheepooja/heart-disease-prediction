@@ -1,0 +1,6 @@
+"0","heart_disease1 %>%"
+"0","  group_by(age,heart_dis) %>%"
+"0","  summarise(avg_max_hr = mean(max_hr)) %>%"
+"0","  arrange(age,heart_dis)"
+"1","[38;5;232m`summarise()` has grouped output by 'age'. You can override using the `.groups` argument.[39m
+"

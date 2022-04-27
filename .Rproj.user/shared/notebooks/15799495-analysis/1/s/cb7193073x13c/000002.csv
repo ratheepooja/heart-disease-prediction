@@ -1,0 +1,12 @@
+"0","```r
+heart_disease1 %>%
+  group_by(chest_pain_type,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(chest_pain_type,heart_dis) %>%
+ ggplot(aes(x = chest_pain_type, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = \"dodge\") + 
+  labs(title = \"Heart disease present max in type 1 Chest Pain\")
+```"
+"1","`summarise()` has grouped output by 'chest_pain_type'. You can override using the `.groups`
+argument.
+"

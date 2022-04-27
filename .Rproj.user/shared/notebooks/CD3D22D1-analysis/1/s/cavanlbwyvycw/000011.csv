@@ -1,0 +1,12 @@
+"0","heart_disease <- read_csv(""Heart_Disease_Prediction.csv"")"
+"1","[1mRows: [22m[34m270[39m [1mColumns: [22m[34m14[39m
+"
+"1","[36m--[39m [1mColumn specification[22m [36m--------------------------------------------------------------------[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m  (1): Heart Disease
+[32mdbl[39m (13): Age, Sex, Chest pain type, BP, Cholesterol, FBS over 120, EKG results, Max HR,...
+"
+"1","
+[36mi[39m Use `spec()` to retrieve the full column specification for this data.
+[36mi[39m Specify the column types or set `show_col_types = FALSE` to quiet this message.
+"

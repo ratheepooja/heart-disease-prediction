@@ -1,0 +1,2 @@
+"0","heart_disease1 <- "
+"0","  rename(heart_disease, ""age""= ""Age"" , ""chest_pain_type"" = ""Chest pain type"" , ""chl""  = ""Cholesterol"" , ""bp""  =""BP"", ""max_hr"" =""Max HR"" ,""ST_slope"" = ""Slope of ST"" ,  ""heart_dis"" = ""Heart Disease"" , ""ST_depression"" = ""ST depression"")"

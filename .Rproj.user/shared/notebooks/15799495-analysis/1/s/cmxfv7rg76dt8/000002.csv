@@ -1,0 +1,10 @@
+"0","```r
+heart_disease1 %>%
+  group_by(Sex,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(Sex,heart_dis) %>%
+ ggplot(aes(x = Sex, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = \"dodge\") + 
+  labs(title = \"Relationship between Sex and Average Max HR\")
+
+```"

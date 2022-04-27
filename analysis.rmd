@@ -1,0 +1,147 @@
+---
+title: "Heart Rate Predictions"
+author: "Pooja Rathee"
+output:
+  pdf_document: default
+  html_notebook: default
+date: 26 April 2022
+---
+# Read the following packages
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+```
+
+# Read the file
+```{r}
+heart_disease <- read_csv("Heart_Disease_Prediction.csv")
+```
+# Viewing the table and column names in the file
+```{r}
+colnames(heart_disease)
+View(heart_disease)
+```
+# Rename the columnes to make it more consistent
+
+```{r}
+heart_disease1 <- 
+  rename(heart_disease, "age"= "Age" , "chest_pain_type" = "Chest pain type" , "chl"  = "Cholesterol" , "bp"  ="BP", "max_hr" ="Max HR" ,"ST_slope" = "Slope of ST" ,  "heart_dis" = "Heart Disease" , "ST_depression" = "ST depression")
+```
+
+# Doing some analytical calculations alongwith formatting
+```{r}
+# Format the heart rate
+is.factor(heart_disease1$max_hr)
+heart_disease1$max_hr <- as.numeric(as.character(heart_disease1$max_hr))
+is.numeric(heart_disease1$max_hr)
+
+# Find the mean, median, max and min values
+mean(heart_disease1$max_hr) #straight average 
+median(heart_disease1$max_hr) #midpoint number in the ascending array of heart rate
+max(heart_disease1$max_hr) #max rate
+min(heart_disease1$max_hr) #min rate
+
+# Formatting the Sex column
+is.numeric(heart_disease1$Sex)
+heart_disease1$Sex <- as.factor(as.numeric(heart_disease1$Sex))
+is.factor(heart_disease1$Sex)
+
+```
+# Summarize the column of Heart Rate and aggregate further it with presence and absence of heart diseases
+```{r}
+summary(heart_disease1$max_hr)
+
+# Compare presence and absence of disease with heart rate
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis, FUN = mean)
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis, FUN = median)
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis, FUN = max)
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis, FUN = min)
+
+# Aggregate further it with age category
+aggregate(heart_disease1$max_hr ~ heart_disease1$heart_dis + heart_disease1$age, FUN = mean)
+ 
+```
+# Piping the data 
+```{r}
+heart_disease1 %>%
+  group_by(age,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(age,heart_dis)
+```
+# Let's do some visualization
+```{r}
+heart_disease1 %>%
+  group_by(age,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(age,heart_dis) %>%
+ ggplot(aes(x = age, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Heart disease present mainly in 38-55 and above 77 years old groups.")
+
+```
+# Heart diseases mainly present in 38-70 age groups people and as heart rate without any disease is generally increases in 27-28 age group youngsters.
+Doing some more 
+```{r}
+heart_disease1 %>%
+  group_by(chest_pain_type,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(chest_pain_type,heart_dis) %>%
+ ggplot(aes(x = chest_pain_type, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Heart disease present max in type 1 Chest Pain")
+
+```
+# Heart rate generally high in individuals that are having some diseases affecting from type 1 chest pain as compare to other types while type 2 chest pain generally having max high rate without any diseases.
+
+```{r}
+heart_disease1 %>%
+  group_by(Sex,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(Sex,heart_dis) %>%
+ ggplot(aes(x = Sex, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Relationship between Sex and Average Max HR")
+
+```
+# Level 1 Sex category having 140 heart rate in individuals that are affected by diseases while in level 2 Sex category having 165 beats in individuals that are free from any diseases. 
+
+```{r}
+heart_disease1 %>%
+  group_by(bp,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(bp,heart_dis) %>%
+ ggplot(aes(x = bp, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Relationship between BP and Average Max HR")
+
+```
+# Heart rate generally reaching at high level of the individuals having BP > 190 upto 190 beats.
+
+
+```{r}
+heart_disease1 %>%
+  group_by(chl,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(chl,heart_dis) %>%
+ ggplot(aes(x = chl, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Relationship between Cholestrol and Average Max HR")
+
+```
+
+# Max Heart Disease present in individuals having chl in 200 - 300 range and heart rate reaching maximum upto 180 beats approximately at 220 level of cholestrol.
+
+
+```{r}
+heart_disease1 %>%
+  group_by(ST_depression,heart_dis) %>%
+  summarise(avg_max_hr = mean(max_hr)) %>%
+  arrange(ST_depression,heart_dis) %>%
+ ggplot(aes(x = ST_depression, y = avg_max_hr, fill = heart_dis)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Relationship between ST Depression and Average Max HR")
+
+
+```
+# ST Depression with diseases having max heart rate is of value 3.8 and having heart rate of 170 beats and without disease is of 0.7 and having heart rate of 180 beats.

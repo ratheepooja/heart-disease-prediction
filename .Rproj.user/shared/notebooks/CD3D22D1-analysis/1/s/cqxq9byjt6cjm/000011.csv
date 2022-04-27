@@ -1,0 +1,10 @@
+"0","heart_disease1 %>%"
+"0","  group_by(ST_depression,heart_dis) %>%"
+"0","  summarise(avg_max_hr = mean(max_hr)) %>%"
+"0","  arrange(ST_depression,heart_dis) %>%"
+"0"," ggplot(aes(x = ST_depression, y = avg_max_hr, fill = heart_dis)) +"
+"0","  geom_col(position = ""dodge"") + "
+"0","  labs(title = ""Relationship between ST Depression and Average Max HR"")"
+"1","[38;5;232m`summarise()` has grouped output by 'ST_depression'. You can override using the `.groups`
+argument.[39m
+"
